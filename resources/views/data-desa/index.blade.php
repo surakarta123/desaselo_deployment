@@ -6,7 +6,7 @@
 
       <div class="row my-4">
         <div class="section-title">
-            <h2>Data Agama</h2>
+            <h2>Pendidikan Penduduk</h2>
         </div>
         <div class="col-lg-4">
             <div class="card">
@@ -15,8 +15,8 @@
                         <table class="table table-bordered">
                             <thead class="table-primary">
                                 <tr>
-                                    <th scope="col">Agama</th>
-                                    <th scope="col">Penganut</th>
+                                    <th scope="col">Tingkat Pendidikan</th>
+                                    <th scope="col">Jiwa</th>
                                 </tr>
                             </thead>
                             <tbody>

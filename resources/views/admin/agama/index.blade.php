@@ -7,7 +7,7 @@
         <div class="card-header bg-primary">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <h5 class="card-title fw-semibold text-white">Data Agama</h5>
+                    <h5 class="card-title fw-semibold text-white">Data Kesejahteraan</h5>
                 </div>
             </div>
         </div>
