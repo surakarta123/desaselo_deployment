@@ -16,7 +16,7 @@
                             <thead class="table-primary">
                                 <tr>
                                     <th scope="col">Tingkat Pendidikan</th>
-                                    <th scope="col">Jiwa</th>
+                                    <th scope="col">Jumlah</th>
                                 </tr>
                             </thead>
                             <tbody>

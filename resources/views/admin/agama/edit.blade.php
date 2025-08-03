@@ -7,7 +7,7 @@
         <div class="card-header bg-primary">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <h5 class="card-title fw-semibold text-white">Edit Data Agama</h5>
+                    <h5 class="card-title fw-semibold text-white">Edit Data Pendidikan</h5>
                 </div>
                 <div class="col-6 text-right">
                     <a href="/admin/agama" type="button" class="btn btn-warning float-end">Kembali</a>
@@ -20,14 +20,14 @@
                 @method('put')
                 @csrf
                 <div class="mb-3">
-                    <label for="agama" class="form-label">Nama Agama <span style="color: red">*</span></label>
+                    <label for="agama" class="form-label">Tingkat Pendidikan<span style="color: red">*</span></label>
                     <input type="text" class="form-control" name="agama" id="agama" value="{{ old('agama', $agama->agama) }}">
                     @error('agama')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="penganut" class="form-label">Jumlah Penganut <span style="color: red">*</span></label>
+                    <label for="penganut" class="form-label">Jumlah<span style="color: red">*</span></label>
                     <input type="number" class="form-control" name="penganut" id="penganut" value="{{ old('penganut', $agama->penganut) }}">
                     @error('penganut')
                         <div class="text-danger">{{ $message }}</div>

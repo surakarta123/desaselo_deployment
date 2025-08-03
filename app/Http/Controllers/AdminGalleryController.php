@@ -35,33 +35,38 @@ class AdminGalleryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'gambar'       => 'required|mimes:png,jpg,jpeg',
-            'keterangan'   => 'required'
+            'media'       => 'required|file|mimes:png,jpg,jpeg,mp4,mov,avi|max:20480',
+            'keterangan'  => 'required'
         ], [
-            'gambar.required'       => 'Form wajib di isi !',
-            'gambar.mimes'          => 'Format yang di izinkan png,jpg,jpeg !',
-            'keterangan.required'   => 'Form wajib di,'
+            'media.required'       => 'Media wajib diunggah!',
+            'media.mimes'          => 'Format yang diizinkan: png, jpg, jpeg, mp4, mov, avi!',
+            'keterangan.required'  => 'Keterangan wajib diisi!',
         ]);
 
-        if ($request->hasFile('gambar')) {
+
+        if ($request->hasFile('media')) {
             $path       = 'img-gallery/';
-            $file       = $request->file('gambar');
+            $file       = $request->file('media');
             $extension  = $file->getClientOriginalExtension();
             $fileName   = uniqid() . '.' . $extension;
-            $gambar     = $file->storeAs($path, $fileName, 'public');
+            $media      = $file->storeAs($path, $fileName, 'public');
+            $mimeType   = $file->getClientMimeType(); // tambahkan ini kalau mau
         } else {
-            $gambar     = null;
+            $media = null;
+            $mimeType = null;
         }
+
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
         Gallery::create([
-            'gambar'       => $gambar,
-            'keterangan'   => $request->keterangan,
-            'user_id'      => auth()->user()->id,
-        ]);
+        'gambar'       => $media,          // nama file yang disimpan
+        'keterangan'   => $request->keterangan,
+        'user_id'      => auth()->user()->id,
+        'tipe'         => $mimeType,       // mime type yang tadi kita ambil dari file
+    ]);
 
         return redirect('/admin/gallery')->with('success', 'Berhasil menambahkan informasi layanan baru');
     }

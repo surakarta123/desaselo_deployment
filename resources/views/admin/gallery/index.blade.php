@@ -38,8 +38,23 @@
                                     @foreach ($gallerys as $gallery)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td><img src="{{ asset('storage/' . $gallery->gambar) }}" alt="Foto Gallery"
-                                                    class="img-fluid" style="max-height: 200px; max-width: 200px"></td>
+                                            <td> @php
+                                                $ext = pathinfo($gallery->gambar, PATHINFO_EXTENSION);
+                                                $isImage = in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif', 'webp']);
+                                                $isVideo = in_array(strtolower($ext), ['mp4', 'webm', 'ogg']);
+                                            @endphp
+
+    @if ($isImage)
+        <img src="{{ asset('storage/' . $gallery->gambar) }}" alt="Media"
+            class="img-fluid" style="max-height: 200px; max-width: 200px">
+    @elseif ($isVideo)
+        <video controls style="max-height: 200px; max-width: 200px">
+            <source src="{{ asset('storage/' . $gallery->gambar) }}" type="video/{{ $ext }}">
+            Browser kamu tidak mendukung pemutar video.
+        </video>
+    @else
+        <p class="text-danger">Tipe file tidak dikenali</p>
+    @endif
                                             <td>{{ $gallery->keterangan }}</td>
                                             <td>
                                                 <a href="/admin/gallery/{{ $gallery->id }}/edit" type="button"

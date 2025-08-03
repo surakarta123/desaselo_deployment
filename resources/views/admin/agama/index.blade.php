@@ -7,7 +7,7 @@
         <div class="card-header bg-primary">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <h5 class="card-title fw-semibold text-white">Data Kesejahteraan</h5>
+                    <h5 class="card-title fw-semibold text-white">Data Pendidikan</h5>
                 </div>
             </div>
         </div>
@@ -25,8 +25,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Agama</th>
-                                <th>Jumlah Penganut</th>
+                                <th>Tingkat Pendidikan</th>
+                                <th>Jumlah</th>
                                 <th>Perbarui Data</th>
                             </tr>
                         </thead>

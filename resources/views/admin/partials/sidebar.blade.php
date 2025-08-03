@@ -151,7 +151,7 @@
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-point"></i>
                                 </div>
-                                <span class="hide-menu">Agama</span>
+                                <span class="hide-menu">Pendidikan</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2025 at 06:16 AM
+-- Generation Time: Aug 03, 2025 at 11:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,14 +63,6 @@ CREATE TABLE `anggarans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `anggarans`
---
-
-INSERT INTO `anggarans` (`id`, `judul`, `slug`, `keterangan`, `gambar`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Rincian Dana Desa 2024', 'rincian-dana-desa', '<p>Contoh saja</p>', 'img-anggaran//67aaf242796a8.jpeg', 1, '2025-02-11 06:46:26', '2025-02-11 06:46:49'),
-(2, 'Rincian 2025', 'rincian-2025', '<p>Contoh Saja</p>', 'img-anggaran//67aaf2a551c24.png', 1, '2025-02-11 06:48:05', '2025-02-11 06:48:05');
 
 -- --------------------------------------------------------
 
@@ -170,6 +162,7 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `galleries` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `gambar` varchar(255) NOT NULL,
+  `tipe` varchar(100) NOT NULL,
   `keterangan` varchar(255) NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -180,11 +173,20 @@ CREATE TABLE `galleries` (
 -- Dumping data for table `galleries`
 --
 
-INSERT INTO `galleries` (`id`, `gambar`, `keterangan`, `user_id`, `created_at`, `updated_at`) VALUES
-(9, 'img-gallery//688ec56989b5b.jpg', 'Perpustakaan Desa', 1, '2025-08-03 02:11:53', '2025-08-03 02:11:53'),
-(10, 'img-gallery//688ec5b180f9a.jpg', 'Kegiatan 1', 1, '2025-08-03 02:13:05', '2025-08-03 02:13:05'),
-(11, 'img-gallery//688ec5c24640f.jpg', 'Kegiatan 2', 1, '2025-08-03 02:13:22', '2025-08-03 02:13:22'),
-(12, 'img-gallery//688ec5e19566a.jpg', 'Kebun gizi', 1, '2025-08-03 02:13:53', '2025-08-03 02:14:41');
+INSERT INTO `galleries` (`id`, `gambar`, `tipe`, `keterangan`, `user_id`, `created_at`, `updated_at`) VALUES
+(9, 'img-gallery//688ec56989b5b.jpg', '', 'Perpustakaan Desa', 1, '2025-08-03 02:11:53', '2025-08-03 02:11:53'),
+(10, 'img-gallery//688ec5b180f9a.jpg', '', 'Kegiatan 1', 1, '2025-08-03 02:13:05', '2025-08-03 02:13:05'),
+(13, 'img-gallery//688f22ec6943c.mp4', 'video/mp4', 'Karnaval Desa Selo', 1, '2025-08-03 08:50:55', '2025-08-03 08:50:55'),
+(14, 'img-gallery//688f265ea4afa.mp4', 'video/mp4', 'Dokumentasi Karnaval', 1, '2025-08-03 09:05:35', '2025-08-03 09:05:35'),
+(15, 'img-gallery//688f267fdebbf.jpg', 'image/jpeg', 'Perangkat Desa', 1, '2025-08-03 09:06:07', '2025-08-03 09:06:07'),
+(16, 'img-gallery//688f26aa0feed.jpg', 'image/jpeg', 'Lokasi', 1, '2025-08-03 09:06:50', '2025-08-03 09:06:50'),
+(17, 'img-gallery//688f26de2c533.jpg', 'image/jpeg', 'Kebun Gizi', 1, '2025-08-03 09:07:42', '2025-08-03 09:07:42'),
+(18, 'img-gallery//688f26f742759.jpg', 'image/jpeg', 'Dokumentasi Acara 1', 1, '2025-08-03 09:08:07', '2025-08-03 09:08:07'),
+(19, 'img-gallery//688f270e099e6.jpg', 'image/jpeg', 'Dokumentasi Acara 2', 1, '2025-08-03 09:08:30', '2025-08-03 09:08:30'),
+(20, 'img-gallery//688f27287d7d2.jpg', 'image/jpeg', 'Dokumentasi Acara 3', 1, '2025-08-03 09:08:56', '2025-08-03 09:08:56'),
+(21, 'img-gallery//688f274db13e9.jpg', 'image/jpeg', 'Dokumentasi Acara 4', 1, '2025-08-03 09:09:33', '2025-08-03 09:09:33'),
+(22, 'img-gallery//688f2763dfd28.jpg', 'image/jpeg', 'Dokumentasi Acara 5', 1, '2025-08-03 09:09:56', '2025-08-03 09:09:56'),
+(23, 'img-gallery//688f277de9417.jpg', 'image/jpeg', 'Dokumentasi', 1, '2025-08-03 09:10:22', '2025-08-03 09:10:22');
 
 -- --------------------------------------------------------
 
@@ -255,7 +257,7 @@ CREATE TABLE `kontaks` (
 --
 
 INSERT INTO `kontaks` (`id`, `lokasi`, `email`, `no_hp`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Desa Selo, Kecamatan Selo, Boyolali.', 'loketonline.desaselo@gmail.com', ' 0813-9160-9671 [Enik suryani]\r\n 0813-9015-8351 [Triyanto]', 1, '2025-02-11 03:21:45', '2025-02-11 07:00:46');
+(1, 'Desa Selo, Kecamatan Selo, Boyolali.', 'loketonline.desaselo@gmail.com', '0813-9160-9671 [Enik suryani] 0813-9015-8351 [Triyanto]', 1, '2025-02-11 03:21:45', '2025-08-03 08:29:55');
 
 -- --------------------------------------------------------
 
@@ -491,7 +493,7 @@ CREATE TABLE `sejarahs` (
 --
 
 INSERT INTO `sejarahs` (`id`, `judul`, `body`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Sejarah Desa Cibuni', '<p>Di salah satu dusun di Desa Selo, tepatnya di Dusun Sepandan Wetan terdapat wisata alam yang sampai saat ini tidak terawat yaitu \"Goa Lowo dan Goa Song\" yang konon pada zaman pemberontakan MMC (Merapi Merbabu Complex). Tempat ini dijadikan tempat penyimpanan Kitab Suci Al Qur\'an dan juga sebagai persembunyian warga dari serangan pemberontakan MMC. Dan konon pada zaman dahulu tepat di depan pelataran \"Goa Song\" tersebut terdapat seonggok batu yang sebenarnya adalah seonggok emas. Tetapi seonggok batu tersebut sekarang sudah tidak bisa dijumpai. Menurut cerita, seonggok batu itu sudah diambil oleh Raja Kasunanan Surakarta Sri Susuhunan Pakubuwono VIII untuk diboyong ke Kraton Kasunanan Surakarta Hadiningrat.</p><p>Di Dusun itu terdapat Makam \"Ki Ageng Sekar Alas\" yang masih merupakan saudara seperguruan \"Ki Kebo Kanigoro\". Sampai saat ini, makam tersebut masih banyak dikunjungi oleh para peziarah.</p>', 1, '2025-02-11 03:21:45', '2025-08-03 03:12:36');
+(1, 'Sejarah Desa Selo', '<p>Di salah satu dusun di Desa Selo, tepatnya di Dusun Sepandan Wetan terdapat wisata alam yang sampai saat ini tidak terawat yaitu \"Goa Lowo dan Goa Song\" yang konon pada zaman pemberontakan MMC (Merapi Merbabu Complex). Tempat ini dijadikan tempat penyimpanan Kitab Suci Al Qur\'an dan juga sebagai persembunyian warga dari serangan pemberontakan MMC. Dan konon pada zaman dahulu tepat di depan pelataran \"Goa Song\" tersebut terdapat seonggok batu yang sebenarnya adalah seonggok emas. Tetapi seonggok batu tersebut sekarang sudah tidak bisa dijumpai. Menurut cerita, seonggok batu itu sudah diambil oleh Raja Kasunanan Surakarta Sri Susuhunan Pakubuwono VIII untuk diboyong ke Kraton Kasunanan Surakarta Hadiningrat.</p><p>Di Dusun itu terdapat Makam \"Ki Ageng Sekar Alas\" yang masih merupakan saudara seperguruan \"Ki Kebo Kanigoro\". Sampai saat ini, makam tersebut masih banyak dikunjungi oleh para peziarah.</p>', 1, '2025-02-11 03:21:45', '2025-08-03 08:22:49');
 
 -- --------------------------------------------------------
 
@@ -517,7 +519,7 @@ CREATE TABLE `situses` (
 --
 
 INSERT INTO `situses` (`id`, `logo`, `nm_desa`, `kecamatan`, `kabupaten`, `provinsi`, `kode_pos`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'img-logo//688ecd70a042e.jpg', 'Desa Selo', 'Selo', 'Boyolali', 'Jawa Tengah', 898989, 1, '2025-02-11 03:21:45', '2025-08-03 02:46:08');
+(1, 'img-logo//688ecd70a042e.jpg', 'Desa Selo', 'Selo', 'Boyolali', 'Jawa Tengah', 57363, 1, '2025-02-11 03:21:45', '2025-08-03 08:30:33');
 
 -- --------------------------------------------------------
 
@@ -562,15 +564,6 @@ CREATE TABLE `umkms` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `umkms`
---
-
-INSERT INTO `umkms` (`id`, `foto`, `produk`, `slug`, `harga`, `deskripsi`, `no_hp`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'img-produk/67aae72a74e39.jpeg', 'Kerajinan Rajut Eceng Gondok', 'kerajinan-rajut-eceng-gondok', 150000, '<p>KERANJANG MINI ENCENG GONDOK DIMENSI 30X28X10 CM ( UKURAN PAKET )<br>DETAIL SIZE PRODUK : 30X18X10 CM<br>dikarenakan produk merupakan handmade wajar bila ada selisih dengan size yg tertera dideskripsi.<br><br>LANGSUNG PENGRAJIN , BELI DI MALL PASTI 100 LEBIH<br><br>LANGUNS AJA SIS.<br><br>NOTE : SUPAYA TIDAK RUSAK KAMI MENYEDIAKAN KARDUS BERBAYAR HANYA 500 RUPIAH , SILAHKAN CHECK OUT DI ETALASE<br><br>#ENCENGGONDOK #STORAGE #KERANJANGANYAMAN #SEAGRASS</p>', '81212121212', 1, '2025-02-11 05:59:06', '2025-02-11 05:59:06'),
-(2, 'img-produk/67aae9ee8b60f.png', 'Pisang Bolen', 'pisang-bolen', 30000, '<p>Perpaduan pisang yang dibalut dengan kulit pastry yang renyah ini jadi camilan khas Bandung. Saat dimakan, kombinasi lembutnya pisang, manis gurihnya cokelat dan keju yang jadi isian rasa dan renyahnya pastry menjadikan camilan ini oleh-oleh khas yang wajib untuk dibeli.</p><p>Kamu bisa mendapatkan pisang bolen ini di Kartika Sari yang sudah memiliki 8 cabang. Gerai pertamanya berada di Jl. Haji Akbar, No. 4 Kebon Kawung yang lokasinya tidak jauh dari Stasiun Bandung. Di sini, pisang bolen disajikan dalam berbagai pilihan rasa, mulai dari Cokelat Keju, Durian Keju, Kacang Hijau, Peuyeum Keju, dan Keju Spesial.</p>', '823343434343', 1, '2025-02-11 06:10:54', '2025-02-11 06:10:54'),
-(3, 'img-produk/67aaeaf668166.jpeg', 'Dorokdokcu, Banjaran', 'dorokdokcu-banjaran', 15000, '<p>Dorokdok Pedas Jeruk Brand: Dorokdokcu Rasa: Pedas daun jeruk Netto: 50gr Harga: Rp 10.000 Terbuat dari 100% kulit sapi . Ini enak banget rasanya pedes asin gurih plus ada sedikit rasa khas daun jeruknya, sobi micin dijamin nagih!!</p>', '83434342323', 1, '2025-02-11 06:15:18', '2025-02-11 06:15:18');
 
 -- --------------------------------------------------------
 
@@ -638,7 +631,7 @@ CREATE TABLE `visi_misis` (
 --
 
 INSERT INTO `visi_misis` (`id`, `visi`, `misi`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, '<p>Boyolali, melanjutkan semangat Pro Investasi&nbsp;</p><p>Boyolali, membangun untuk perubahan&nbsp;</p><p>Boyolali, bersih, berintegritas, sejahtera&nbsp;</p><p>Boyolali, sehat, produktif dan berdaya saing&nbsp;</p><p>Boyolali, lumbung padi dan pangan nasional&nbsp;</p><p>Boyolali kota susu, produsen daging dan hasil ternak/perikanan&nbsp;</p><p>Boyolali, lebih maju dan berteknologi</p>', '<p>TUJUAN:&nbsp;</p><p>• Mengidentifikasi potensi dan permasalahan desa sebagai dasar perencanaan.&nbsp;</p><p>• Mewujudkan rencana pengembangan desa yang sesuai dengan potensi dan permasalahan desa.&nbsp;</p><p>• Mewujudkan dokumen rencana penataan ruang tingkat desa sebagai pedoman dalam kegiatan penataan ruang dan pengembangan desa.&nbsp;</p><p>• Mewujudkan program kerja desa selama 20 Tahun.<br>&nbsp;</p><p>SASARAN/MANFAAT:</p><p>•Teridentifikasinya potensi dan permasalahan desa secara fisik dan nonfisik.&nbsp;</p><p>• Tersusunnya dokumen serta peta Masterplan Desa.</p><p>&nbsp;• Tersusunnya rencana pengembangan desa yang dilengkapi dengan metode implementasi dan pengendalian.&nbsp;</p><p>• Tersusunnya rencana program kerja desa sesuai dengan potensi dan permasalahan desa selama 20 Tahun.<br>&nbsp;</p>', 1, '2025-02-11 03:21:45', '2025-08-03 02:52:47');
+(1, '<ul><li>Boyolali, melanjutkan semangat Pro Investasi&nbsp;</li><li>Boyolali, membangun untuk perubahan&nbsp;</li><li>Boyolali, bersih, berintegritas, sejahtera&nbsp;</li><li>Boyolali, sehat, produktif dan berdaya saing&nbsp;</li><li>Boyolali, lumbung padi dan pangan nasional&nbsp;</li><li>Boyolali kota susu, produsen daging dan hasil ternak/perikanan&nbsp;</li><li>Boyolali, lebih maju dan berteknologi</li></ul>', '<p>• Mengidentifikasi potensi dan permasalahan desa sebagai dasar perencanaan.&nbsp;</p><p>• Mewujudkan rencana pengembangan desa yang sesuai dengan potensi dan permasalahan desa.&nbsp;</p><p>• Mewujudkan dokumen rencana penataan ruang tingkat desa sebagai pedoman dalam kegiatan penataan ruang dan pengembangan desa.&nbsp;</p><p>• Mewujudkan program kerja desa selama 20 Tahun.</p>', 1, '2025-02-11 03:21:45', '2025-08-03 08:23:59');
 
 -- --------------------------------------------------------
 
@@ -890,7 +883,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `jenis_kelamins`
