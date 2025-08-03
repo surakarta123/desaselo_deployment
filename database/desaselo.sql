@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2025 at 11:11 AM
+-- Generation Time: Aug 03, 2025 at 02:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -191,6 +191,21 @@ INSERT INTO `galleries` (`id`, `gambar`, `tipe`, `keterangan`, `user_id`, `creat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `guestbooks`
+--
+
+CREATE TABLE `guestbooks` (
+  `id` bigint(20) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `asal` varchar(255) NOT NULL,
+  `pesan` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jenis_kelamins`
 --
 
@@ -273,14 +288,6 @@ CREATE TABLE `layanans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `layanans`
---
-
-INSERT INTO `layanans` (`id`, `layanan`, `persyaratan`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Program UHC di Kota Bandung', '<p><strong>Identitas Resmi:</strong> Memiliki identitas yang dikeluarkan oleh Pemerintah Kota Bandung selama lebih dari 1 tahun.</p><p><strong>Kartu Keluarga (KK):</strong> Bagi bayi yang usianya lebih dari 1 bulan, namanya harus sudah tercantum di Kartu Keluarga untuk bisa masuk dalam UHC.</p><p><strong>Dokumen Pendukung:</strong> Menyiapkan KTP, KK, dan hasil pemeriksaan pasien/rujukan/surat rawat.</p><p><strong>Kepesertaan JKN:</strong> UHC berlaku untuk:</p><ul><li>Pasien yang belum memiliki JKN atau PBI non-aktif (sesuai persyaratan).</li><li>Pasien terdaftar BPJS Mandiri non-aktif karena masalah premi (dengan tambahan formulir PYDOPD).</li><li>Pasien terdaftar BPJS pegawai swasta non-aktif (dengan tambahan surat keterangan kerja).</li><li>Pasien BBL (bayi dari ibu yang terdaftar PBI dengan usia &lt;28 hari) dengan tambahan Surat Keterangan Lahir.</li></ul>', 1, '2025-02-11 06:23:03', '2025-02-11 06:23:03'),
-(2, 'Pendaftaran Layanan Kesehatan di Puskesmas Secara Online', '<p><strong>Sistem yang Dikembangkan Sendiri oleh Puskesmas:</strong> Setiap Puskesmas mungkin memiliki sistem pendaftaran online yang unik. Petunjuk pendaftaran biasanya tersedia di situs web Puskesmas atau dapat diperoleh melalui kontak telepon.</p><p><strong>Platform Kesehatan Online Pemerintah:</strong> Jika tersedia, platform ini terintegrasi dengan beberapa Puskesmas. Anda mungkin perlu mendaftar akun terlebih dahulu sebelum dapat mendaftar di Puskesmas. Informasi lebih lanjut dapat ditemukan di situs web Dinas Kesehatan Kota Bandung.</p><p><strong>Aplikasi Pihak Ketiga:</strong> Beberapa Puskesmas mungkin bekerja sama dengan aplikasi pihak ketiga untuk menyediakan layanan pendaftaran online. Pastikan aplikasi tersebut terpercaya dan aman sebelum menggunakannya.</p><p>Langkah-langkah umum pendaftaran online di Puskesmas Bandung meliputi:</p><p><strong>Akses Situs Web atau Aplikasi:</strong> Buka situs web Puskesmas atau aplikasi yang telah ditentukan.</p><p><strong>Pendaftaran Akun:</strong> Jika diperlukan, buat akun dengan mengisi data diri yang diminta.</p><p><strong>Pilih Layanan:</strong> Pilih jenis layanan kesehatan yang dibutuhkan dan jadwal kunjungan.</p><p><strong>Konfirmasi Pendaftaran:</strong> Setelah mengisi semua informasi yang diperlukan, konfirmasi pendaftaran Anda.</p>', 1, '2025-02-11 06:24:18', '2025-02-11 06:24:18');
 
 -- --------------------------------------------------------
 
@@ -433,6 +440,21 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `persuratans`
+--
+
+CREATE TABLE `persuratans` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `jenis_formulir` enum('enum','pengajuan_akta_kelahiran','peristiwa_kependudukan','sebagai_pasangan_suami_istri','kebenaran_kelahiran','kebenaran_kematian_orang_tua','kebenaran_kematian') NOT NULL,
+  `jawaban_formulir` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `petas`
 --
 
@@ -519,7 +541,7 @@ CREATE TABLE `situses` (
 --
 
 INSERT INTO `situses` (`id`, `logo`, `nm_desa`, `kecamatan`, `kabupaten`, `provinsi`, `kode_pos`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'img-logo//688ecd70a042e.jpg', 'Desa Selo', 'Selo', 'Boyolali', 'Jawa Tengah', 57363, 1, '2025-02-11 03:21:45', '2025-08-03 08:30:33');
+(1, 'img-logo//688f50ece63a4.jpg', 'Desa Selo', 'Selo', 'Boyolali', 'Jawa Tengah', 57363, 1, '2025-02-10 20:21:45', '2025-08-03 12:07:09');
 
 -- --------------------------------------------------------
 
@@ -543,7 +565,7 @@ CREATE TABLE `sliders` (
 
 INSERT INTO `sliders` (`id`, `judul`, `deskripsi`, `img_slider`, `link_btn`, `created_at`, `updated_at`) VALUES
 (1, 'Website Desa', 'Selo adalah desa di Kecamatan Selo, Boyolali, Jawa Tengah, Indonesia.', 'img-slider//67aac9d9e8306.jpg', '#', '2025-02-11 03:21:45', '2025-08-03 01:47:02'),
-(2, 'Sejarah Desa', 'Di salah satu dusun di Desa Selo, tepatnya di Dusun Sepandan Wetan terdapat wisata alam yang sampai saat ini tidak terawat yaitu \"Goa Lowo dan Goa Song\" yang konon pada zaman pemberontakan MMC (Merapi Merbabu Complex). Tempat ini dijadikan tempat penyimpanan Kitab Suci Al Qur\'an dan juga sebagai persembunyian warga dari serangan pemberontakan MMC. Dan konon pada zaman dahulu tepat di depan pelataran \"Goa Song\" tersebut terdapat seonggok batu yang sebenarnya adalah seonggok emas. Tetapi seonggok batu tersebut sekarang sudah tidak bisa dijumpai. Menurut cerita, seonggok batu itu sudah diambil oleh Raja Kasunanan Surakarta Sri Susuhunan Pakubuwono VIII untuk diboyong ke Kraton Kasunanan Surakarta Hadiningrat.\r\n\r\nDi Dusun itu terdapat Makam \"Ki Ageng Sekar Alas\" yang masih merupakan saudara seperguruan \"Ki Kebo Kanigoro\". Sampai saat ini, makam tersebut masih banyak dikunjungi oleh para peziarah.', 'img-slider//67aacc68000d2.png', '#', '2025-02-11 03:21:45', '2025-08-03 01:47:48'),
+(2, 'Sejarah Desa', 'Di salah satu dusun di Desa Selo, tepatnya di Dusun Sepandan Wetan terdapat wisata alam yang sampai saat ini tidak terawat yaitu \"Goa Lowo dan Goa Song\" yang konon pada zaman pemberontakan MMC (Merapi Merbabu Complex). Tempat ini dijadikan tempat penyimpanan Kitab Suci Al Qur\'an dan juga sebagai persembunyian warga dari serangan pemberontakan MMC.', 'img-slider//67aacc68000d2.png', '#', '2025-02-11 03:21:45', '2025-08-03 10:19:14'),
 (3, 'Visi & Misi', 'Visi & Misi desa KN dalah Terwujudnya masyarakat Desa OHA yang Bersih, Relegius, Sejahtera, Rapi dan Indah', 'img-slider//67aaca21bd8df.jpeg', '#', '2025-02-11 03:21:45', '2025-02-11 04:07:50');
 
 -- --------------------------------------------------------
@@ -609,7 +631,7 @@ CREATE TABLE `video_profils` (
 --
 
 INSERT INTO `video_profils` (`id`, `url_video`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'https://youtu.be/s8xKZxDaJeM', 1, '2025-02-11 03:21:45', '2025-08-03 02:22:48');
+(1, 'https://www.youtube.com/embed/z5L11PhL2fo', 1, '2025-02-11 03:21:45', '2025-08-03 11:46:46');
 
 -- --------------------------------------------------------
 
@@ -711,6 +733,12 @@ ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `guestbooks`
+--
+ALTER TABLE `guestbooks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jenis_kelamins`
 --
 ALTER TABLE `jenis_kelamins`
@@ -773,6 +801,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `persuratans`
+--
+ALTER TABLE `persuratans`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `petas`
 --
 ALTER TABLE `petas`
@@ -788,12 +822,6 @@ ALTER TABLE `post_statuses`
 -- Indexes for table `sejarahs`
 --
 ALTER TABLE `sejarahs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `situses`
---
-ALTER TABLE `situses`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -886,6 +914,12 @@ ALTER TABLE `galleries`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `guestbooks`
+--
+ALTER TABLE `guestbooks`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `jenis_kelamins`
 --
 ALTER TABLE `jenis_kelamins`
@@ -934,6 +968,12 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `persuratans`
+--
+ALTER TABLE `persuratans`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `petas`
 --
 ALTER TABLE `petas`
@@ -949,12 +989,6 @@ ALTER TABLE `post_statuses`
 -- AUTO_INCREMENT for table `sejarahs`
 --
 ALTER TABLE `sejarahs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `situses`
---
-ALTER TABLE `situses`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

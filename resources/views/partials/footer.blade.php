@@ -41,17 +41,15 @@
             <!-- KODE BARU UNTUK LOGO DITAMBAHKAN DI SINI -->
             <div class="row footer-logos text-center align-items-center mt-4">
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <img src="{{ asset('admin/assets/images/auth/LOGOSELOKOTAK.png') }}" alt="Logo 1" class="img-fluid" style="max-height: 80px;">
+                    <img src="{{ asset('storage/img-logo/logo_kelompok.png') }}" alt="Logo 1" class="img-fluid" style="max-height: 80px;">
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <img src="{{ asset('admin/assets/images/auth/LOGOSELOKOTAK.png') }}" alt="Logo 2" class="img-fluid" style="max-height: 80px;">
+                    <img src="{{ asset('storage/img-logo/logosponsor.png') }}" alt="Logo 2" class="img-fluid" style="max-height: 80px;">
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <img src="{{ asset('admin/assets/images/auth/LOGOSELOKOTAK.png') }}" alt="Logo 3" class="img-fluid" style="max-height: 80px;">
+                    <img src="{{ asset('storage/img-logo/logo_kecamatan.jpg') }}" alt="Logo 3" class="img-fluid" style="max-height: 80px;">
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <img src="{{ asset('admin/assets/images/auth/LOGOSELOKOTAK.png') }}" alt="Logo 4" class="img-fluid" style="max-height: 80px;">
-                </div>
+
             </div>
             <!-- AKHIR DARI KODE BARU -->
 
