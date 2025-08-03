@@ -10,15 +10,16 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('guestbooks', function (Blueprint $table) {
-        $table->id();
-        $table->string('nama');
-        $table->string('asal')->nullable(); // Asal/alamat, boleh kosong
-        $table->text('pesan');
-        $table->timestamps(); // otomatis membuat kolom created_at & updated_at
-    });
-}
+    {
+        Schema::create('guestbooks', function (Blueprint $table) {
+            $table->bigInteger('id', true);
+            $table->string('nama');
+            $table->string('asal');
+            $table->text('pesan');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->useCurrent();
+        });
+    }
 
     /**
      * Reverse the migrations.

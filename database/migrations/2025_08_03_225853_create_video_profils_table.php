@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('persuratans', function (Blueprint $table) {
-            $table->id();
+        Schema::create('video_profils', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('url_video');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('persuratans');
+        Schema::dropIfExists('video_profils');
     }
 };
