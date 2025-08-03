@@ -228,6 +228,16 @@
                     </ul>
                 </li>
 
+                
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/admin/persuratan " aria-expanded="false">
+                        <span>
+                            <i class="ti ti-point"></i>
+                        </span>
+                        <span class="hide-menu">Persuratan</span>
+                    </a>
+                </li>
+
                 <!-- KODE BARU DITAMBAHKAN DI SINI -->
                 <li class="sidebar-item {{ request()->routeIs('admin.guestbook.index') ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('admin.guestbook.index') }}" aria-expanded="false">

@@ -163,3 +163,12 @@ Route::delete('/admin/buku-tamu/{guestbook}', [AdminGuestbookController::class, 
 
 // Public Buku Tamu Route
 Route::post('/buku-tamu', [GuestbookController::class, 'store'])->name('guestbook.store');
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/persuratan', [PersuratanController::class, 'index'])->name('persuratan.index');
+    Route::get('/persuratan/{id}', [PersuratanController::class, 'show'])->name('persuratan.show');
+    Route::delete('/persuratan/{id}', [PersuratanController::class, 'destroy'])->name('persuratan.destroy');
+    Route::get('/persuratan/{id}/generate-pdf', [PersuratanController::class, 'generatePdf'])->name('persuratan.generate');
+});
+
+Route::get('/admin/persuratan/{id}', [PersuratanController::class, 'show'])->name('admin.persuratan.show');
